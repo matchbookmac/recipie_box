@@ -1,4 +1,6 @@
-<h1><%= @recipe.name %></h1>
+<h1><%= @recipe.name %> Rating: <%= @recipe.rating %></h1>
+
+<p><%= @recipe.instructions %></p>
 
 <div class="col-md-6">
   <% if @categories.any? %>

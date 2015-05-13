@@ -14,6 +14,19 @@ before do
   @all_categories = Category.all
 end
 
+get '/reset' do
+  Category.all.each do |category|
+    category.destroy
+  end
+  Recipe.all.each do |recipe|
+    recipe.destroy
+  end
+  Ingredient.all.each do |ingredient|
+    ingredient.destroy
+  end
+  redirect to '/'
+end
+
 get '/' do
   erb :index
 end

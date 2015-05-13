@@ -140,3 +140,12 @@ describe 'Updating and Deleting a category from the list of categories', :type =
     expect(page).to have_content 'Boring'
   end
 end
+
+describe 'The recipe details path', :type => :feature do
+  it 'Also shows a recipes rating and instructions' do
+    recipe = Recipe.create(name: 'Pie', instructions: 'Get pie shell. Get filling. Put filling in pie shell. Eat pie. Be happy.', rating: 5)
+    visit "/recipes/#{recipe.id}"
+    expect(page).to have_content 'Rating: 5'
+    expect(page).to have_content 'Be happy.'
+  end
+end

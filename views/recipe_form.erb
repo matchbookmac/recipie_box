@@ -8,9 +8,9 @@
      <input id="instructions" name="instructions" type="text" class="form-control" placeholder="Recipe Instructions" required>
     </div>
     <div class="form-group">
-      <select class="form-control" id="rating">
+      <select class="form-control" id="rating" name="rating">
         <% 6.times do |i| %>
-          <option id="rating_<%= i %>" value="<%= i %>"><%= i %></option>
+          <option id="rating" value="<%= i %>"><%= i %></option>
         <% end %>
       </select>
     </div>
