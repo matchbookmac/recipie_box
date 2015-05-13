@@ -37,3 +37,17 @@ describe 'Adding a category path', :type => :feature do
     expect(page).to have_content('Breakfast')
   end
 end
+
+describe 'Adding a recipe to a category path', :type => :feature do
+  before do
+    recipe = Recipe.create(name: 'Eggs Benedict', instructions: 'Go to a diner, do not try at home', rating: 5)
+    category = Category.create(name: 'Breakfast')
+  end
+  it 'Starts on the categories page. Lets a user click on a category to see details for that category. Lets a user add a recipe to that category' do
+    visit '/categories'
+    click_on 'Breakfast'
+    check(recipe.id)
+    click_button 'add_recipes'
+    expect(page).to have_content('Eggs Benedict')
+  end
+end
