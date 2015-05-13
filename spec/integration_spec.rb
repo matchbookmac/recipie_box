@@ -118,6 +118,25 @@ describe 'Updating and Deleting a recipe from the list of recipes', :type => :fe
     visit "/recipes/#{recipe.id}"
     fill_in 'new_recipe_name', with: 'Light Beer'
     click_button 'update_recipe'
-    expect(page).to have_content recipe.name
+    expect(page).to have_content 'Light Beer'
+  end
+end
+
+describe 'Updating and Deleting a category from the list of categories', :type => :feature do
+  it 'deletes a category' do
+    category_0 = Category.create(name: 'Brunch')
+    category_1 = Category.create(name: 'Amazing')
+    visit "/categories/#{category_1.id}"
+    expect(page).to have_content(category_1.name)
+    click_button 'delete_category'
+    expect(page).to_not have_content("#{category_1.name}")
+    expect(page).to have_content(category_0.name)
+  end
+  it 'updates the category name' do
+    category = Category.create(name: 'Sweets')
+    visit "/categories/#{category.id}"
+    fill_in 'new_category_name', with: 'Boring'
+    click_button 'update_category'
+    expect(page).to have_content 'Boring'
   end
 end

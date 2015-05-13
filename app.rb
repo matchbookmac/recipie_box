@@ -120,6 +120,17 @@ get '/categories/:id' do
   erb :category
 end
 
+delete '/categories/:id/delete' do
+  Category.find(params['id']).destroy
+  redirect to '/categories'
+end
+
+patch '/categories/:id/update' do
+  @category = Category.find(params['id'])
+  @category.update(name: params['new_category_name'])
+  redirect to "/categories/#{@category.id}"
+end
+
 patch '/categories/:id/add/recipe' do
   @category = Category.find(params['id'])
   added_recipes = Recipe.find(params['recipe_id'])

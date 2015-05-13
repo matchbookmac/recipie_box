@@ -24,3 +24,18 @@
     <button id="add_recipes" class="btn btn-success" type="submit" name="add_recipes">Save</button>
   </form>
 <% end %>
+
+<form action="/categories/<%= @category.id %>/update" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <div class="form-group">
+    <label for="new_category_name">Update this category's name</label>
+    <input id="new_category_name" name="new_category_name" type="text" autofocus>
+  </div>
+  <button class="btn btn-warning" type="submit" id="update_category" name="update_category">Update</button>
+</form>
+
+<form action="/categories/<%= @category.id %>/delete" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <label for="delete_category">Delete this Category:</label>
+  <button class="btn btn-danger" type="submit" id="delete_category" name="delete_category">Delete</button>
+</form>
