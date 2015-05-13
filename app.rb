@@ -31,6 +31,22 @@ post '/recipes/new' do
   redirect to '/recipes'
 end
 
+get '/recipes/:id' do
+  @recipe = Recipe.find(params['id'])
+  @categories = @recipe.categories
+  erb :recipe
+end
+
+patch '/recipes/:id/add/category' do
+  @recipe = Recipe.find(params['id'])
+  added_categories = Category.find(params['category_id'])
+  added_categories.each do |category|
+    @recipe.categories.push(category)
+  end
+  @categories = @recipe.categories
+  redirect to "/recipes/#{params['id']}"
+end
+
 get '/ingredients' do
   erb :ingredients
 end
