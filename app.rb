@@ -6,10 +6,10 @@ require 'pg'
 require 'pry'
 require './lib/category'
 require './lib/ingredient'
-require './lib/recipie'
+require './lib/recipe'
 
 before do
-  @all_recipies = Recipie.all
+  @all_recipes = Recipe.all
   @all_ingredients = Ingredient.all
 end
 
@@ -17,17 +17,17 @@ get '/' do
   erb :index
 end
 
-get '/recipies' do
-  erb :recipies
+get '/recipes' do
+  erb :recipes
 end
 
-get '/recipies/new' do
-  erb :recipie_form
+get '/recipes/new' do
+  erb :recipe_form
 end
 
-post '/recipies/new' do
-  Recipie.create(name: params['recipie_name'], instructions: params['instructions'])
-  redirect to '/recipies'
+post '/recipes/new' do
+  Recipe.create(name: params['recipe_name'], instructions: params['instructions'])
+  redirect to '/recipes'
 end
 
 get '/ingredients' do

@@ -20,27 +20,27 @@ ActiveRecord::Schema.define(version: 20150513163530) do
     t.string "name"
   end
 
-  create_table "categories_recipies", id: false, force: :cascade do |t|
+  create_table "categories_recipes", id: false, force: :cascade do |t|
     t.integer "category_id"
-    t.integer "recipie_id"
+    t.integer "recipe_id"
   end
 
-  add_index "categories_recipies", ["category_id"], name: "index_categories_recipies_on_category_id", using: :btree
-  add_index "categories_recipies", ["recipie_id"], name: "index_categories_recipies_on_recipie_id", using: :btree
+  add_index "categories_recipes", ["category_id"], name: "index_categories_recipes_on_category_id", using: :btree
+  add_index "categories_recipes", ["recipe_id"], name: "index_categories_recipes_on_recipe_id", using: :btree
 
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
   end
 
-  create_table "ingredients_recipies", id: false, force: :cascade do |t|
+  create_table "ingredients_recipes", id: false, force: :cascade do |t|
     t.integer "ingredient_id"
-    t.integer "recipie_id"
+    t.integer "recipe_id"
   end
 
-  add_index "ingredients_recipies", ["ingredient_id"], name: "index_ingredients_recipies_on_ingredient_id", using: :btree
-  add_index "ingredients_recipies", ["recipie_id"], name: "index_ingredients_recipies_on_recipie_id", using: :btree
+  add_index "ingredients_recipes", ["ingredient_id"], name: "index_ingredients_recipes_on_ingredient_id", using: :btree
+  add_index "ingredients_recipes", ["recipe_id"], name: "index_ingredients_recipes_on_recipe_id", using: :btree
 
-  create_table "recipies", force: :cascade do |t|
+  create_table "recipes", force: :cascade do |t|
     t.string  "name"
     t.text    "instructions"
     t.integer "rating"

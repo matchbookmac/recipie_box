@@ -3,7 +3,7 @@ ENV['RACK_ENV'] = 'test'
 require 'sinatra/activerecord'
 require 'rspec'
 require 'category'
-require 'recipie'
+require 'recipe'
 require 'pry'
 require 'pg'
 
@@ -12,8 +12,8 @@ RSpec.configure do |config|
     Category.all.each do |category|
       category.destroy
     end
-    Recipie.all.each do |recipie|
-      recipie.destroy
+    Recipe.all.each do |recipe|
+      recipe.destroy
     end
     Ingredient.all.each do |ingredient|
       ingredient.destroy
@@ -23,8 +23,8 @@ RSpec.configure do |config|
     Category.all.each do |category|
       category.destroy
     end
-    Recipie.all.each do |recipie|
-      recipie.destroy
+    Recipe.all.each do |recipe|
+      recipe.destroy
     end
     Ingredient.all.each do |ingredient|
       ingredient.destroy
