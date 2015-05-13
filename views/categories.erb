@@ -1,0 +1,11 @@
+<h1>Here are your Category</h1>
+
+<% if @all_categories.any? %>
+  <ul>
+    <% @all_categories.each do |category| %>
+      <li>
+        <a href="/categories/<%= category.id %>"><%= category.name %></a>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

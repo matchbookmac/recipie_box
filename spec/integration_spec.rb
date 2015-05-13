@@ -27,3 +27,13 @@ describe 'Adding a ingredient path', :type => :feature do
     expect(page).to have_content('BBQ Sauce')
   end
 end
+
+describe 'Adding a category path', :type => :feature do
+  it 'Shows a welcome page. On clicking add category link, shows a page with forms for creating a new category. On submit, shows the list of ingredients.' do
+    visit '/'
+    click_on 'add_category'
+    fill_in 'category_name', with: 'Breakfast'
+    click_button 'category_save'
+    expect(page).to have_content('Breakfast')
+  end
+end

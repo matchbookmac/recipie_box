@@ -11,6 +11,7 @@ require './lib/recipe'
 before do
   @all_recipes = Recipe.all
   @all_ingredients = Ingredient.all
+  @all_categories = Category.all
 end
 
 get '/' do
@@ -41,4 +42,17 @@ end
 post '/ingredients/new' do
   Ingredient.create(name: params['ingredient_name'])
   redirect to '/ingredients'
+end
+
+get '/categories' do
+  erb :categories
+end
+
+get '/categories/new' do
+  erb :category_form
+end
+
+post '/categories/new' do
+  Category.create(name: params['category_name'])
+  redirect to '/categories'
 end
