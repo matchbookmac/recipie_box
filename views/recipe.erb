@@ -53,3 +53,18 @@
     </form>
   <% end %>
 </div>
+
+<form action="/recipes/<%= @recipe.id %>/update" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <div class="form-group">
+    <label for="new_recipe_name">Update this recipe's name</label>
+    <input id="new_recipe_name" name="new_recipe_name" type="text" autofocus>
+  </div>
+  <button class="btn btn-warning" type="submit" id="update_recipe" name="update_recipe">Update</button>
+</form>
+
+<form action="/recipes/<%= @recipe.id %>/delete" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <label for="delete_recipe">Delete this Recipe:</label>
+  <button class="btn btn-danger" type="submit" id="delete_recipe" name="delete_recipe">Delete</button>
+</form>

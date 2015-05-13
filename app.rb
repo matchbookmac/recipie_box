@@ -38,6 +38,17 @@ get '/recipes/:id' do
   erb :recipe
 end
 
+delete '/recipes/:id/delete' do
+  Recipe.find(params['id']).destroy
+  redirect to '/recipes'
+end
+
+patch '/recipes/:id/update' do
+  @recipe = Recipe.find(params['id'])
+  @recipe.update(name: params['new_recipe_name'])
+  redirect to "/recipes/#{@recipe.id}"
+end
+
 patch '/recipes/:id/add/category' do
   @recipe = Recipe.find(params['id'])
   added_categories = Category.find(params['category_id'])

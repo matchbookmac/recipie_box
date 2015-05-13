@@ -102,3 +102,22 @@ describe 'Updating and Deleting an ingredient from the list of ingredients', :ty
     expect(page).to have_content 'Butter'
   end
 end
+
+describe 'Updating and Deleting a recipe from the list of recipes', :type => :feature do
+  it 'deletes a recipe' do
+    recipe_0 = Recipe.create(name: 'Fried Eggs')
+    recipe_1 = Recipe.create(name: 'Toast')
+    visit "/recipes/#{recipe_1.id}"
+    expect(page).to have_content(recipe_1.name)
+    click_button 'delete_recipe'
+    expect(page).to_not have_content("#{recipe_1.name}")
+    expect(page).to have_content(recipe_0.name)
+  end
+  it 'updates the recipe name' do
+    recipe = Recipe.create(name: 'Beer')
+    visit "/recipes/#{recipe.id}"
+    fill_in 'new_recipe_name', with: 'Light Beer'
+    click_button 'update_recipe'
+    expect(page).to have_content recipe.name
+  end
+end
