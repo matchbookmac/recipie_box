@@ -27,13 +27,14 @@ get '/recipes/new' do
 end
 
 post '/recipes/new' do
-  Recipe.create(name: params['recipe_name'], instructions: params['instructions'])
+  Recipe.create(name: params['recipe_name'], instructions: params['instructions'], rating: params['rating'])
   redirect to '/recipes'
 end
 
 get '/recipes/:id' do
   @recipe = Recipe.find(params['id'])
   @categories = @recipe.categories
+  @ingredients = @recipe.ingredients
   erb :recipe
 end
 
@@ -44,6 +45,18 @@ patch '/recipes/:id/add/category' do
     @recipe.categories.push(category)
   end
   @categories = @recipe.categories
+  @ingredients = @recipe.ingredients
+  redirect to "/recipes/#{params['id']}"
+end
+
+patch '/recipes/:id/add/ingredient' do
+  @recipe = Recipe.find(params['id'])
+  added_ingredients = Ingredient.find(params['ingredient_id'])
+  added_ingredients.each do |ingredient|
+    @recipe.ingredients.push(ingredient)
+  end
+  @categories = @recipe.categories
+  @ingredients = @recipe.ingredients
   redirect to "/recipes/#{params['id']}"
 end
 
