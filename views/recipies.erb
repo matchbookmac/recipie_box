@@ -1,8 +1,8 @@
 <h1>Here are your Recipies</h1>
 
-<% if @recipies.any? %>
+<% if @all_recipies.any? %>
   <ul>
-    <% @recipies.each do |recipie| %>
+    <% @all_recipies.each do |recipie| %>
       <li>
         <a href="/recipies/<%= recipie.id %>"><%= recipie.name %></a>
       </li>

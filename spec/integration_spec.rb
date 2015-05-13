@@ -17,3 +17,13 @@ describe 'Adding a recipie path', :type => :feature do
     expect(page).to have_content('Pulled Pork')
   end
 end
+
+describe 'Adding a ingredient path', :type => :feature do
+  it 'Shows a welcome page. On clicking add ingredient link, shows a page with forms for creating a new ingredient. On submit, shows the list of ingredients.' do
+    visit '/'
+    click_on 'add_ingredient'
+    fill_in 'ingredient_name', with: 'BBQ Sauce'
+    click_button 'ingredient_save'
+    expect(page).to have_content('BBQ Sauce')
+  end
+end

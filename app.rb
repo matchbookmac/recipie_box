@@ -9,7 +9,8 @@ require './lib/ingredient'
 require './lib/recipie'
 
 before do
-  @recipies = Recipie.all
+  @all_recipies = Recipie.all
+  @all_ingredients = Ingredient.all
 end
 
 get '/' do
@@ -25,8 +26,19 @@ get '/recipies/new' do
 end
 
 post '/recipies/new' do
-  recipie_name = params['recipie_name']
-  instructions = params['instructions']
-  Recipie.create(name: recipie_name, instructions: instructions)
-  redirect to :recipies
+  Recipie.create(name: params['recipie_name'], instructions: params['instructions'])
+  redirect to '/recipies'
+end
+
+get '/ingredients' do
+  erb :ingredients
+end
+
+get '/ingredients/new' do
+  erb :ingredient_form
+end
+
+post '/ingredients/new' do
+  Ingredient.create(name: params['ingredient_name'])
+  redirect to '/ingredients'
 end

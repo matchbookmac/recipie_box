@@ -1,0 +1,11 @@
+<h1>Here are your Ingredients</h1>
+
+<% if @all_ingredients.any? %>
+  <ul>
+    <% @all_ingredients.each do |ingredient| %>
+      <li>
+        <a href="/ingredients/<%= ingredient.id %>"><%= ingredient.name %></a>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
