@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recipie Box</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div id="wrap" class="container">
+    <%= yield %>
+  </div>
+</body>
+<footer>
+  <div id ="footer">
+    <div class ="row">
+      <div class="text-center">
+        <div class="col-md-4">
+          <a id='list_categories' href="/categories" class="btn btn-primary" role="button">List of Categories</a>
+        </div>
+        <div class="col-md-4">
+          <a id='list_recipies' href="/recipies" class="btn btn-primary" role="button">List of Recipies</a>
+        </div>
+        <div class="col-md-4">
+          <a id='list_ingredients' href="/ingredients" class="btn btn-primary" role="button">List of Ingredients</a>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="row">
+      <div class="text-center">
+        <div class="col-md-4">
+          <a id='add_survey' href="/surveys/new">Add a Survey</a>
+        </div>
+        <div class="col-md-4">
+          <a id='add_question' href="/questions/new">Add a Question</a>
+        </div>
+        <div class="col-md-4">
+          <a href="/projects/new">Add a Project</a>
+        </div>
+      </div>
+    </div> -->
+  </div>
+</footer>
+</html>
