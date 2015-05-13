@@ -1,7 +1,33 @@
 ENV['RACK_ENV'] = 'test'
 
-require 'bundler/setup'
-Bundler.require :default, :test
-Dir[File.dirname(__FILE__) + '/../lib/*.rb'].each { |file| require file}
-Capybara.app = Sinatra::Application
-set :show_exceptions, false
+require 'sinatra/activerecord'
+require 'rspec'
+require 'category'
+require 'recipie'
+require 'pry'
+require 'pg'
+
+RSpec.configure do |config|
+  config.before(:each) do
+    Category.all.each do |category|
+      category.destroy
+    end
+    Recipie.all.each do |recipie|
+      recipie.destroy
+    end
+    Ingredient.all.each do |ingredient|
+      ingredient.destroy
+    end
+  end
+  config.after(:each) do
+    Category.all.each do |category|
+      category.destroy
+    end
+    Recipie.all.each do |recipie|
+      recipie.destroy
+    end
+    Ingredient.all.each do |ingredient|
+      ingredient.destroy
+    end
+  end
+end

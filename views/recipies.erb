@@ -1,0 +1,11 @@
+<h1>Here are your Recipies</h1>
+
+<% if @recipies.any? %>
+  <ul>
+    <% @recipies.each do |recipie| %>
+      <li>
+        <a href="/recipies/<%= recipie.id %>"><%= recipie.name %></a>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
