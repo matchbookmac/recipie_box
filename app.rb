@@ -73,6 +73,12 @@ post '/ingredients/new' do
   redirect to '/ingredients'
 end
 
+get '/ingredients/:id' do
+  @ingredient = Ingredient.find(params['id'])
+  @recipes = @ingredient.recipes
+  erb :ingredient
+end
+
 get '/categories' do
   erb :categories
 end

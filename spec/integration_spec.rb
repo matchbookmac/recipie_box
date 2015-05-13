@@ -73,3 +73,13 @@ describe 'Adding an ingredient to a recipe path', :type => :feature do
     expect(page).to have_content('Egg Whites')
   end
 end
+
+describe 'Viewing the list of ingredients', :type => :feature do
+  it 'Shows the list of ingredients' do
+    ingredient = Ingredient.create(name: 'Spam')
+    visit '/ingredients'
+    expect(page).to have_content(ingredient.name)
+    click_on ingredient.name
+    expect(page).to have_content("#{ingredient.name}")
+  end
+end
