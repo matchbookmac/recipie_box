@@ -1,0 +1,17 @@
+<h1><%= @ingredient.name %></h1>
+
+<% if @recipes.any? %>
+  <ul>
+    <% @recipes.each do |recipe| %>
+      <li>
+        <a href="/recipes/<%= recipe.id %>"><%= recipe.name %></a>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<form class="form-control" action="/ingredients/<%= @ingredient.id %>/delete" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <label for="delete_ingredient">Delete this Ingredient:</label>
+  <button class="btn btn-danger" type="submit" id="delete_ingredient" name="delete_ingredient">Delete</button>
+</form>

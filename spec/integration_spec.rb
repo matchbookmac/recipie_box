@@ -83,3 +83,15 @@ describe 'Viewing the list of ingredients', :type => :feature do
     expect(page).to have_content("#{ingredient.name}")
   end
 end
+
+describe 'Deleting an ingredient from the list of ingredients', :type => :feature do
+  it 'deletes an ingredient' do
+    ingredient_0 = Ingredient.create(name: 'Spam')
+    ingredient_1 = Ingredient.create(name: 'Lard')
+    visit "/ingredients/#{ingredient_1.id}"
+    expect(page).to have_content(ingredient_1.name)
+    click_button 'delete_ingredient'
+    expect(page).to_not have_content("#{ingredient_1.name}")
+    expect(page).to have_content(ingredient_0.name)
+  end
+end

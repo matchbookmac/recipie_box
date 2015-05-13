@@ -79,6 +79,12 @@ get '/ingredients/:id' do
   erb :ingredient
 end
 
+delete '/ingredients/:id/delete' do
+  Ingredient.find(params['id']).delete
+  erb :ingredients
+end
+
+
 get '/categories' do
   erb :categories
 end
