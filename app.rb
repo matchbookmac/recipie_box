@@ -80,10 +80,15 @@ get '/ingredients/:id' do
 end
 
 delete '/ingredients/:id/delete' do
-  Ingredient.find(params['id']).delete
-  erb :ingredients
+  Ingredient.find(params['id']).destroy
+  redirect to '/ingredients'
 end
 
+patch '/ingredients/:id/update' do
+  @ingredient = Ingredient.find(params['id'])
+  @ingredient.update(name: params['new_ingredient_name'])
+  redirect to "/ingredients/#{@ingredient.id}"
+end
 
 get '/categories' do
   erb :categories

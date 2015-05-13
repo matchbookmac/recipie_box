@@ -10,7 +10,16 @@
   </ul>
 <% end %>
 
-<form class="form-control" action="/ingredients/<%= @ingredient.id %>/delete" method="post">
+<form action="/ingredients/<%= @ingredient.id %>/update" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <div class="form-group">
+    <label for="new_ingredient_name">Update this ingredient's name</label>
+    <input id="new_ingredient_name" name="new_ingredient_name" type="text" autofocus>
+  </div>
+  <button class="btn btn-warning" type="submit" id="update_ingredient" name="update_ingredient">Update</button>
+</form>
+
+<form action="/ingredients/<%= @ingredient.id %>/delete" method="post">
   <input type="hidden" name="_method" value="delete">
   <label for="delete_ingredient">Delete this Ingredient:</label>
   <button class="btn btn-danger" type="submit" id="delete_ingredient" name="delete_ingredient">Delete</button>

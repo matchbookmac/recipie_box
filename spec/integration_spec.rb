@@ -84,7 +84,7 @@ describe 'Viewing the list of ingredients', :type => :feature do
   end
 end
 
-describe 'Deleting an ingredient from the list of ingredients', :type => :feature do
+describe 'Updating and Deleting an ingredient from the list of ingredients', :type => :feature do
   it 'deletes an ingredient' do
     ingredient_0 = Ingredient.create(name: 'Spam')
     ingredient_1 = Ingredient.create(name: 'Lard')
@@ -93,5 +93,12 @@ describe 'Deleting an ingredient from the list of ingredients', :type => :featur
     click_button 'delete_ingredient'
     expect(page).to_not have_content("#{ingredient_1.name}")
     expect(page).to have_content(ingredient_0.name)
+  end
+  it 'updates the ingredient name' do
+    ingredient = Ingredient.create(name: 'Milk')
+    visit "/ingredients/#{ingredient.id}"
+    fill_in 'new_ingredient_name', with: 'Butter'
+    click_button 'update_ingredient'
+    expect(page).to have_content 'Butter'
   end
 end
