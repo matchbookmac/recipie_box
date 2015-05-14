@@ -132,6 +132,14 @@ describe 'Updating and Deleting a recipe from the list of recipes', :type => :fe
     click_button 'update_instructions'
     expect(page).to have_content 'Go to bar.'
   end
+  it 'updates the recipe rating' do
+    recipe = Recipe.create(name: 'Beer', rating: 3)
+    visit "/recipes/#{recipe.id}"
+    click_on 'Edit'
+    select '5', from: 'rating'
+    click_button 'update_rating'
+    expect(page).to have_content 'Rating: 5'
+  end
 end
 
 describe 'Updating and Deleting a category from the list of categories', :type => :feature do

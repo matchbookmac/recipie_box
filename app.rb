@@ -75,6 +75,12 @@ patch '/recipes/:id/update/instructions' do
   redirect to "/recipes/#{@recipe.id}"
 end
 
+patch '/recipes/:id/update/rating' do
+  @recipe = Recipe.find(params['id'])
+  @recipe.update(rating: params['rating'])
+  redirect to "/recipes/#{@recipe.id}"
+end
+
 patch '/recipes/:id/add/category' do
   @recipe = Recipe.find(params['id'])
   added_categories = Category.find(params['category_id'])

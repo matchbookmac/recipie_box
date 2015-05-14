@@ -17,7 +17,7 @@ div#second {
 }*/
 body {
   height: 100%;
-  background: rgba(200, 54, 54, 0.25);
+  opacity: .9;
   color: #fff;
   background-image: url("img/box.jpg");
   /* The html and body elements cannot have any padding or margin. */

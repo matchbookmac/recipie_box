@@ -57,6 +57,22 @@
     </form>
   </div>
 </div>
+<div class="row">
+  <div class="col-md-4">
+    <form action="/recipes/<%= @recipe.id %>/update/rating" method="post">
+      <input type="hidden" name="_method" value="patch">
+      <p class="text-center">Update this recipe's rating</p>
+      <div class="form-group">
+        <select class="form-control" id="rating" name="rating">
+          <% 6.times do |i| %>
+            <option id="rating" value="<%= i %>"><%= i %></option>
+          <% end %>
+        </select>
+      </div>
+      <button id="update_rating" name="update_rating" type="submit" class="btn btn-warning">Update</button>
+    </form>
+  </div>
+</div>
 <div class="form-bottom-1 col-md-4 col-md-offset-4 block-center">
   <form action="/recipes/<%= @recipe.id %>/delete" method="post">
     <div class="form-group">
