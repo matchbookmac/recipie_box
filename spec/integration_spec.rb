@@ -12,7 +12,7 @@ describe 'Adding a recipe path', :type => :feature do
     click_on 'add_recipe'
     fill_in 'recipe_name', with: 'Pulled Pork'
     fill_in 'instructions', with: 'Roast pork in 200 degree oven for 10 hours. Eat pork.'
-    select '5', from: 'rating'
+    choose 'rating5'
     click_button 'recipe_save'
     expect(page).to have_content('Pulled Pork')
   end
@@ -136,7 +136,7 @@ describe 'Updating and Deleting a recipe from the list of recipes', :type => :fe
     recipe = Recipe.create(name: 'Beer', rating: 3)
     visit "/recipes/#{recipe.id}"
     click_on 'Edit'
-    select '5', from: 'rating'
+    choose 'rating5'
     click_button 'update_rating'
     expect(page).to have_content 'Rating: 5'
   end

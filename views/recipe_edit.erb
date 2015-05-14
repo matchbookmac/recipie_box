@@ -61,13 +61,20 @@
   <div class="col-md-4">
     <form action="/recipes/<%= @recipe.id %>/update/rating" method="post">
       <input type="hidden" name="_method" value="patch">
-      <p class="text-center">Update this recipe's rating</p>
+      <p>Update this recipe's rating</p>
       <div class="form-group">
-        <select class="form-control" id="rating" name="rating">
-          <% 6.times do |i| %>
-            <option id="rating" value="<%= i %>"><%= i %></option>
-          <% end %>
-        </select>
+        <span class="starRating">
+          <input id="rating5" type="radio" name="rating" value="5">
+          <label for="rating5">5</label>
+          <input id="rating4" type="radio" name="rating" value="4">
+          <label for="rating4">4</label>
+          <input id="rating3" type="radio" name="rating" value="3">
+          <label for="rating3">3</label>
+          <input id="rating2" type="radio" name="rating" value="2">
+          <label for="rating2">2</label>
+          <input id="rating1" type="radio" name="rating" value="1" checked="checked">
+          <label for="rating1">1</label>
+        </span>
       </div>
       <button id="update_rating" name="update_rating" type="submit" class="btn btn-warning">Update</button>
     </form>
