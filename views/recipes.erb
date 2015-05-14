@@ -5,6 +5,14 @@
     <% @all_recipes.each do |recipe| %>
       <li>
         <a href="/recipes/<%= recipe.id %>"><%= recipe.name %></a>
+          <fieldset disabled>
+              <% 5.times do |i| %>
+                <% i += 1 %>
+                <% if recipe.rating == i %>
+                  <img width="11%" height="11%" src="/img/<%= i %>star.png" alt="img/<%= i %>star" />
+                <% end %>
+              <% end %>
+          </fieldset>
       </li>
     <% end %>
   </ul>
