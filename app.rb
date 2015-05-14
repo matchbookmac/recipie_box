@@ -39,6 +39,11 @@ get '/recipes' do
   erb :recipes
 end
 
+get '/recipes/sort/rating' do
+  @all_recipes = Recipe.sort_by_rating
+  erb :recipes
+end
+
 get '/recipes/new' do
   erb :recipe_form
 end

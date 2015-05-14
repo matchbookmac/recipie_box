@@ -169,3 +169,16 @@ describe 'The recipe details path', :type => :feature do
     expect(page).to have_content 'Be happy.'
   end
 end
+
+describe 'Sorting recipes by rating', :type => :feature do
+  it 'sorts the available recipes by their rating' do
+    recipe_0 = Recipe.create({name: 'Pie', instructions: 'make it', rating: 3})
+    recipe_1 = Recipe.create({name: 'Cake', instructions: 'bake it', rating: 2})
+    recipe_2 = Recipe.create({name: 'Salt', instructions: 'shake it', rating: 5})
+    recipe_3 = Recipe.create({name: 'Shake', instructions: 'take it', rating: 2})
+    recipe_4 = Recipe.create({name: 'Sauce', instructions: 'plate it', rating: 3})
+    visit '/recipes'
+    click_on 'recipes_by_rating'
+    expect(page).to have_content('Salt Sauce Pie Shake Cake')
+  end
+end
