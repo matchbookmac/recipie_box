@@ -4,6 +4,7 @@ require 'sinatra/activerecord'
 require 'rspec'
 require 'category'
 require 'recipe'
+require 'ingredient'
 require 'pry'
 require 'pg'
 
