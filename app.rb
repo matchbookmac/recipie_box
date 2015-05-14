@@ -107,6 +107,7 @@ patch '/recipes/:id/add/ingredient' do
   added_ingredients.each do |ingredient|
     @recipe.ingredients.push(ingredient)
   end
+
   @categories = @recipe.categories
   @ingredients = @recipe.ingredients
   redirect to "/recipes/#{params['id']}"

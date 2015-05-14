@@ -1,6 +1,6 @@
 <h1>Edit: <%= @recipe.name %></h1>
 <div class="row">
-  <div class="col-md-4 col-md-offset-2">
+  <div class="col-md-4">
     <% if @all_categories.any? %>
       <form action="/recipes/<%= @recipe.id %>/add/category" method="post">
         <p>Select the Category(ies) for this recipe:</p>
@@ -18,15 +18,17 @@
   </div>
 
 
-  <div class="col-md-4">
+  <div class="col-md-8">
     <% if @all_ingredients.any? %>
       <form action="/recipes/<%= @recipe.id %>/add/ingredient" method="post">
         <p>Select the Ingredients for this Recipe:</p>
         <input type="hidden" name="_method" value="patch">
         <ul>
           <% @all_ingredients.each do |ingredient| %>
-            <div class="checkbox">
-              <input type="checkbox" name="ingredient_id[]" id="<%= ingredient.id %>" value="<%= ingredient.id %>"><%= ingredient.name %></input>
+            <div class="form-group form-inline">
+              <div class="checkbox">
+                <input type="checkbox" name="ingredient_id[]" id="<%= ingredient.id %>" value="<%= ingredient.id %>"><%= ingredient.name %></input>
+              </div>
             </div>
           <% end %>
         </ul>
