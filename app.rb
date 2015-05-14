@@ -14,6 +14,10 @@ before do
   @all_categories = Category.all
 end
 
+get '/test' do
+  erb :test
+end
+
 get '/reset' do
   Category.all.each do |category|
     category.destroy

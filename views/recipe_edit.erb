@@ -1,6 +1,6 @@
 <h1>Edit: <%= @recipe.name %></h1>
 <div class="row">
-  <div class="col-md-3">
+  <div class="col-md-4 col-md-offset-2">
     <% if @all_categories.any? %>
       <form action="/recipes/<%= @recipe.id %>/add/category" method="post">
         <p>Select the Category(ies) for this recipe:</p>
@@ -18,7 +18,7 @@
   </div>
 
 
-  <div class="col-md-3">
+  <div class="col-md-4">
     <% if @all_ingredients.any? %>
       <form action="/recipes/<%= @recipe.id %>/add/ingredient" method="post">
         <p>Select the Ingredients for this Recipe:</p>
@@ -34,8 +34,10 @@
       </form>
     <% end %>
   </div>
-
-  <div class="col-md-3">
+</div>
+<br>
+<div class="row">
+  <div class="col-md-4">
     <form action="/recipes/<%= @recipe.id %>/update/name" method="post">
       <input type="hidden" name="_method" value="patch">
       <div class="form-group">
@@ -46,7 +48,7 @@
     </form>
   </div>
 
-  <div class="col-md-3">
+  <div class="col-md-4">
     <form action="/recipes/<%= @recipe.id %>/update/instructions" method="post">
       <input type="hidden" name="_method" value="patch">
       <div class="form-group">
@@ -56,8 +58,6 @@
       <button class="btn btn-warning" type="submit" id="update_instructions" name="update_instructions">Update</button>
     </form>
   </div>
-</div>
-<div class="row">
   <div class="col-md-4">
     <form action="/recipes/<%= @recipe.id %>/update/rating" method="post">
       <input type="hidden" name="_method" value="patch">
