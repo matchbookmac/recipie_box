@@ -1,31 +1,40 @@
 <h1><%= @ingredient.name %></h1>
-
-<% if @recipes.any? %>
-  <h4>Recipies that use this Ingredient</h4>
-  <ul>
-    <% @recipes.each do |recipe| %>
-      <li>
-        <a href="/recipes/<%= recipe.id %>"><%= recipe.name %></a>
-      </li>
+<div class="row">
+  <div class="col-md-6">
+    <% if @recipes.any? %>
+      <h4>Recipies that use this Ingredient</h4>
+      <ul>
+        <% @recipes.each do |recipe| %>
+          <li>
+            <a href="/recipes/<%= recipe.id %>"><%= recipe.name %></a>
+          </li>
+        <% end %>
+      </ul>
     <% end %>
-  </ul>
-<% end %>
-<div class="col-md-6">
-  <form action="/ingredients/<%= @ingredient.id %>/update" method="post">
-    <input type="hidden" name="_method" value="patch">
-    <p for="new_ingredient_name">Update this ingredient's name</p>
-    <div class="form-group">
-      <input id="new_ingredient_name" name="new_ingredient_name" type="text" autofocus>
-    </div>
-    <button class="btn btn-warning" type="submit" id="update_ingredient" name="update_ingredient">Update</button>
-  </form>
+  </div>
 </div>
-<div class="col-md-6">
-  <form action="/ingredients/<%= @ingredient.id %>/delete" method="post">
-    <input type="hidden" name="_method" value="delete">
-    <div class="form-group">
-      <p>Delete this Ingredient:</p>
-      <button class="btn btn-danger" type="submit" id="delete_ingredient" name="delete_ingredient">Delete</button>
-    </div>
-  </form>
+<div class="form-bottom-1 row">
+  <div class="col-sm-3">
+  </div>
+  <div class="col-sm-3">
+    <form action="/ingredients/<%= @ingredient.id %>/update" method="post">
+      <input type="hidden" name="_method" value="patch">
+      <p for="new_ingredient_name">Update this ingredient's name</p>
+      <div class="form-group">
+        <input id="new_ingredient_name" name="new_ingredient_name" type="text" autofocus>
+      </div>
+      <button class="btn btn-warning" type="submit" id="update_ingredient" name="update_ingredient">Update</button>
+    </form>
+  </div>
+  <div class="col-sm-3">
+  </div>
+  <div class="col-sm-3">
+    <form action="/ingredients/<%= @ingredient.id %>/delete" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <div class="form-group">
+        <p>Delete this Ingredient:</p>
+        <button class="btn btn-danger" type="submit" id="delete_ingredient" name="delete_ingredient">Delete</button>
+      </div>
+    </form>
+  </div>
 </div>

@@ -56,6 +56,7 @@ describe 'Adding a category to a recipe path', :type => :feature do
     category = Category.create(name: 'Breakfast')
     visit '/recipes'
     click_on 'Eggs Benedict'
+    click_on 'Edit'
     check(category.id)
     click_button 'add_categories'
     expect(page).to have_content('Breakfast')
@@ -68,6 +69,7 @@ describe 'Adding an ingredient to a recipe path', :type => :feature do
     ingredient = Ingredient.create(name: 'Egg Whites')
     visit '/recipes'
     click_on 'Eggs Benedict'
+    click_on 'Edit'
     check(ingredient.id)
     click_button 'add_ingredients'
     expect(page).to have_content('Egg Whites')
@@ -109,6 +111,7 @@ describe 'Updating and Deleting a recipe from the list of recipes', :type => :fe
     recipe_1 = Recipe.create(name: 'Toast')
     visit "/recipes/#{recipe_1.id}"
     expect(page).to have_content(recipe_1.name)
+    click_on 'Edit'
     click_button 'delete_recipe'
     expect(page).to_not have_content("#{recipe_1.name}")
     expect(page).to have_content(recipe_0.name)
@@ -116,9 +119,18 @@ describe 'Updating and Deleting a recipe from the list of recipes', :type => :fe
   it 'updates the recipe name' do
     recipe = Recipe.create(name: 'Beer')
     visit "/recipes/#{recipe.id}"
+    click_on 'Edit'
     fill_in 'new_recipe_name', with: 'Light Beer'
     click_button 'update_recipe'
     expect(page).to have_content 'Light Beer'
+  end
+  it 'updates the recipe instructions' do
+    recipe = Recipe.create(name: 'Beer', instructions: 'Water, barley, boil. Add hops, cool. Add yeast. Wait. Have fun. Be Safe')
+    visit "/recipes/#{recipe.id}"
+    click_on 'Edit'
+    fill_in 'new_recipe_instructions', with: 'Go to bar.'
+    click_button 'update_instructions'
+    expect(page).to have_content 'Go to bar.'
   end
 end
 

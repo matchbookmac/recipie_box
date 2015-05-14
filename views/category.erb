@@ -1,50 +1,54 @@
 <h1><%= @category.name %></h1>
+<div class="col-md-6 col-md-offset-3">
 
-<% if @recipes.any? %>
-  <h4>Recipies in this Category:</h4>
-  <ul>
-    <% @recipes.each do |recipe| %>
-      <li>
-        <a href="/recipes/<%= recipe.id %>"><%= recipe.name %></a>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
+  <% if @recipes.any? %>
+    <h4>Recipes in this Category:</h4>
+    <ul>
+      <% @recipes.each do |recipe| %>
+        <li>
+          <a href="/recipes/<%= recipe.id %>"><%= recipe.name %></a>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
 
-<div class="col-md-4">
-<% if @all_recipes.any? %>
-  <form action="/categories/<%= @category.id %>/add/recipe" method="post">
-    <h4>Select the Recipes for this Category:</h4>
-    <input type="hidden" name="_method" value="patch">
+<div class="form-bottom-1">
+  <div class="col-md-4">
+  <% if @all_recipes.any? %>
+    <form action="/categories/<%= @category.id %>/add/recipe" method="post">
+      <h4>Select the Recipes for this Category:</h4>
+      <input type="hidden" name="_method" value="patch">
+        <div class="form-group">
+          <ul>
+          <% @all_recipes.each do |recipe| %>
+            <div class="checkbox">
+              <input type="checkbox" name="recipe_id[]" id="<%= recipe.id %>" value="<%= recipe.id %>"><%= recipe.name %></input>
+            </div>
+          <% end %>
+        </ul>
+      </div>
+      <button id="add_recipes" class="btn btn-success" type="submit" name="add_recipes">Save</button>
+    </form>
+  <% end %>
+  </div>
+  <div class="col-md-4">
+    <form action="/categories/<%= @category.id %>/update" method="post">
+      <input type="hidden" name="_method" value="patch">
       <div class="form-group">
-        <ul>
-        <% @all_recipes.each do |recipe| %>
-          <div class="checkbox">
-            <input type="checkbox" name="recipe_id[]" id="<%= recipe.id %>" value="<%= recipe.id %>"><%= recipe.name %></input>
-          </div>
-        <% end %>
-      </ul>
-    </div>
-    <button id="add_recipes" class="btn btn-success" type="submit" name="add_recipes">Save</button>
-  </form>
-<% end %>
-</div>
-<div class="col-md-4">
-  <form action="/categories/<%= @category.id %>/update" method="post">
-    <input type="hidden" name="_method" value="patch">
-    <div class="form-group">
-      <h4>Update this category's name</h4>
-      <input id="new_category_name" name="new_category_name" type="text" autofocus>
-    </div>
-    <button class="btn btn-warning" type="submit" id="update_category" name="update_category">Update</button>
-  </form>
-</div>
-<div class="col-md-4">
-  <form action="/categories/<%= @category.id %>/delete" method="post">
-    <input type="hidden" name="_method" value="delete">
-    <div class="form-group">
-      <h4>Delete this Category:</h4>
-    </div>
-    <button class="btn btn-danger" type="submit" id="delete_category" name="delete_category">Delete</button>
-  </form>
+        <h4>Update this category's name</h4>
+        <input id="new_category_name" name="new_category_name" type="text" autofocus>
+      </div>
+      <button class="btn btn-warning" type="submit" id="update_category" name="update_category">Update</button>
+    </form>
+  </div>
+  <div class="col-md-4">
+    <form action="/categories/<%= @category.id %>/delete" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <div class="form-group">
+        <h4>Delete this Category:</h4>
+      </div>
+      <button class="btn btn-danger" type="submit" id="delete_category" name="delete_category">Delete</button>
+    </form>
+  </div>
 </div>

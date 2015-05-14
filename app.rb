@@ -51,14 +51,27 @@ get '/recipes/:id' do
   erb :recipe
 end
 
+get '/recipes/:id/edit' do
+  @recipe = Recipe.find(params['id'])
+  @categories = @recipe.categories
+  @ingredients = @recipe.ingredients
+  erb :recipe_edit
+end
+
 delete '/recipes/:id/delete' do
   Recipe.find(params['id']).destroy
   redirect to '/recipes'
 end
 
-patch '/recipes/:id/update' do
+patch '/recipes/:id/update/name' do
   @recipe = Recipe.find(params['id'])
   @recipe.update(name: params['new_recipe_name'])
+  redirect to "/recipes/#{@recipe.id}"
+end
+
+patch '/recipes/:id/update/instructions' do
+  @recipe = Recipe.find(params['id'])
+  @recipe.update(instructions: params['new_recipe_instructions'])
   redirect to "/recipes/#{@recipe.id}"
 end
 

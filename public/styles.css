@@ -1,7 +1,25 @@
 html,
 
+/*div#first {
+  content: "";
+  background: url("img/box.jpg");
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+div#second {
+  ba
+}*/
 body {
   height: 100%;
+  background: rgba(200, 54, 54, 0.25);
+  color: #fff;
+  background-image: url("img/box.jpg");
   /* The html and body elements cannot have any padding or margin. */
 }
 
@@ -19,6 +37,8 @@ body {
 #footer {
   height: 60px;
   background-color: #d3d3d3;
+  opacity: 0.8;
+
 }
 
 h1 {
@@ -29,8 +49,25 @@ h1 {
   text-align: center;
 }
 
-form {
-  /*margin-bottom: -0px;*/
-  position: fixed;
+.col-centered {
+  float: none;
+  margin: 0 auto;
+}
+
+/*.no-wrap{
+  white-space: nowrap;
+}*/
+
+.stretch {
+  width: 100%;
+}
+
+.form-bottom-1 {
+  position: absolute;
   bottom: 90px;
+}
+
+.form-bottom-2 {
+  position: fixed;
+  bottom: 180px;
 }
