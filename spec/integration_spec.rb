@@ -182,3 +182,16 @@ describe 'Sorting recipes by rating', :type => :feature do
     expect(page).to have_content('Salt Sauce Pie Shake Cake')
   end
 end
+
+describe 'errors path', :type => :feature do
+  it 'returns a name exists error to the user' do
+    Recipe.create(name: 'Toast', instructions: 'Put in thingy', rating: 5)
+    visit '/'
+    click_on 'add_recipe'
+    fill_in 'recipe_name', with: 'Toast'
+    fill_in 'instructions', with: 'Put in thingy'
+    choose 'rating5'
+    click_button 'recipe_save'
+    expect(page).to have_content('has already been taken')
+  end
+end

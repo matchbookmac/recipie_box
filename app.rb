@@ -49,8 +49,12 @@ get '/recipes/new' do
 end
 
 post '/recipes/new' do
-  Recipe.create(name: params['recipe_name'], instructions: params['instructions'], rating: params['rating'])
-  redirect to '/recipes'
+  @recipe = Recipe.new(name: params['recipe_name'], instructions: params['instructions'], rating: params['rating'])
+  if @recipe.save
+    redirect to '/recipes'
+  else
+    erb :errors
+  end
 end
 
 get '/recipes/:id' do

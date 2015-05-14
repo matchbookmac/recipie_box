@@ -1,0 +1,10 @@
+<h3>Way to go chump :( </h3>
+
+<ul>
+  <% @recipe.errors().full_messages().each() do |message| %>
+    <li><%= message %></li>
+  <% end %>
+</ul>
+
+
+<h5><a href="/" >Return to main page to try again</a></h5>
