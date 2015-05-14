@@ -11,4 +11,10 @@ describe Recipe do
       expect(Recipe.sort_by_rating).to eq([recipe_2, recipe_4, recipe_0, recipe_3, recipe_1])
     end
   end
+
+  it 'ensures the recipe is not a duplicate' do
+    Recipe.create(name: 'Toast')
+    recipe = Recipe.new(name: 'Toast')
+    expect(recipe.save).to eq(false)
+  end
 end
