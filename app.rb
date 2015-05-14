@@ -49,10 +49,12 @@ get '/recipes/new' do
 end
 
 post '/recipes/new' do
-  @recipe = Recipe.new(name: params['recipe_name'], instructions: params['instructions'], rating: params['rating'])
-  if @recipe.save
+  recipe = Recipe.new(name: params['recipe_name'], instructions: params['instructions'], rating: params['rating'])
+  if recipe.save
     redirect to '/recipes'
   else
+    @object_with_errors = recipe
+    @path = '/recipes/new'
     erb :errors
   end
 end
@@ -126,8 +128,14 @@ get '/ingredients/new' do
 end
 
 post '/ingredients/new' do
-  Ingredient.create(name: params['ingredient_name'])
-  redirect to '/ingredients'
+  ingredient = Ingredient.new(name: params['ingredient_name'])
+  if ingredient.save
+    redirect to '/ingredients'
+  else
+    @object_with_errors = ingredient
+    @path = '/ingredients/new'
+    erb :errors
+  end
 end
 
 get '/ingredients/:id' do
@@ -156,8 +164,14 @@ get '/categories/new' do
 end
 
 post '/categories/new' do
-  Category.create(name: params['category_name'])
-  redirect to '/categories'
+  category = Category.new(name: params['category_name'])
+  if category.save
+    redirect to '/categories'
+  else
+    @object_with_errors = category
+    @path = '/categories/new'
+    erb :errors
+  end
 end
 
 get '/categories/:id' do
